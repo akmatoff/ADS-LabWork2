@@ -1,14 +1,14 @@
 // Class containing left and right child of current node and key value
 class Node {
-    // Key for a node
-    int key;
-    String data;
+    int key; // A key for a Node
+    String data; // Data in the Node
     Node left, right; // Left and right children of node
 
+    // Constructor for Node
     public Node(int key, String data) {
         key = this.key;
         data = this.data; 
-        left = right = null;
+        left = right = null; // Initializing variables
     }
 
 }
@@ -18,19 +18,17 @@ public class BinaryTree {
     // Root of the Binary Tree
     Node root;
 
-    // Constructors
-    BinaryTree(int key, String data) {
-        root = new Node(key, data);
-    }
-
+    // Constructor for an empty Tree
     BinaryTree() {
         root = null;
     }
 
+    // A method that calls insertRec()
     public void insert(int key, String data) {
         root = insertRec(root, key, data);
     }
 
+    // Method for inserting a new Node
     Node insertRec(Node root, int key, String data) {
         Node newNode = new Node(key, data); // Create a new instance of Node
         newNode.key = key; // Insert key 
@@ -39,13 +37,13 @@ public class BinaryTree {
         if (root == null) root = newNode; // If the tree is empty
 
         if (key < root.key) root.left = insertRec(root.left, key, data); // If the given key is less than root's key
-        else if (key > root.key) root.right = insertRec(root.right, key, data); // If the given key is more than root's key
+        if (key > root.key) root.right = insertRec(root.right, key, data); // If the given key is more than root's key
 
         // Return the Node pointer
         return root;
     }
 
-    // A function to search a given key in a BST
+    // A method to search a given key in a BST
     public Node search(int key) {
         Node current = root; // Start from the root
 
@@ -66,9 +64,10 @@ public class BinaryTree {
         } 
 
         System.out.println("Вы искали элемент " + current.data + "?");
-        return current; // Return the element
+        return current; // Return the found element
     }
-
+    
+    // A method that calls inorderRec()
     public void inorder() {
         inorderRec(root);
     }
@@ -98,6 +97,7 @@ public class BinaryTree {
         tree.inorder();
 
         tree.search(5);
-        
+        tree.search(7);
+        tree.search(3);
     }
 }
