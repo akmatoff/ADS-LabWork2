@@ -29,18 +29,19 @@ public class BinaryTree {
     }
 
     // Method for inserting a new Node
-    Node insertRec(Node root, int key, String data) {
+    Node insertRec(Node node, int key, String data) {
         Node newNode = new Node(key, data); // Create a new instance of Node
         newNode.key = key; // Insert key 
         newNode.data = data; // Insert data
 
-        if (root == null) root = newNode; // If the tree is empty
+        // If the tree is empty, return a new node
+        if (node == null) return newNode;
 
-        if (key < root.key) root.left = insertRec(root.left, key, data); // If the given key is less than root's key
-        if (key > root.key) root.right = insertRec(root.right, key, data); // If the given key is more than root's key
+        if (key < node.key) node.left = insertRec(node.left, key, data); // If the given key is less than root's key
+        if (key > node.key) node.right = insertRec(node.right, key, data); // If the given key is more than root's key
 
         // Return the Node pointer
-        return root;
+        return node;
     }
 
     // A method to search a given key in a BST
@@ -66,17 +67,16 @@ public class BinaryTree {
         System.out.println("Вы искали элемент " + current.data + "?");
         return current; // Return the found element
     }
-    
-    // A method that calls inorderRec()
+
     public void inorder() {
         inorderRec(root);
     }
 
-    public void inorderRec(Node root) {
-        if (root != null) {
-            inorderRec(root.left); // Recursive call
-            System.out.println(root.key); // Print key of the Node
-            inorderRec(root.right); 
+    public void inorderRec(Node node) {
+        if (node != null) {
+            inorderRec(node.left); // Recursive call
+            System.out.println(node.key); // Print key of the Node
+            inorderRec(node.right); 
         }
     }
 
@@ -98,6 +98,7 @@ public class BinaryTree {
 
         tree.search(5);
         tree.search(7);
-        tree.search(3);
+        tree.search(1);
+        tree.search(11);
     }
 }
