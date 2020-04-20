@@ -89,7 +89,7 @@ public class BinaryTree {
         tree.insert(2, "Python"); 
         tree.insert(4, "Java"); 
         tree.insert(7, "C#"); 
-        tree.insert(6, "Ruby On Rails"); 
+        tree.insert(6, "Ruby"); 
         tree.insert(8, "C++");
         tree.insert(1, "JavaScript");
         tree.insert(9, "C");
